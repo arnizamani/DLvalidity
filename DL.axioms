@@ -1,0 +1,102 @@
+# 2013 (c) Rahim, Fredrik, Claes
+# Axioms of Description Logic for generating natural proofs
+# Use # for comments
+
+# If (a ≡ b), then (b ≡ a), (b ⊑ a), (a ⊑ b) are also added in the axiom set by the program.
+
+          ¬¬x ≡ x
+       ¬(x∨y) ≡ (¬x∧¬y)
+       ¬(x∧y) ≡ (¬x|¬y)
+    (x&(y&z)) ≡ ((x&y)&z)
+    (x&(y|z)) ≡ ((x&y)|(x&z))
+    (x|(y|z)) ≡ ((x|y)|z)
+    (x|(y&z)) ≡ ((x|y)&(x|z))
+
+    (x∧(y∧z)) ≡ (z∧(x∧y))
+    (x∨(y∨z)) ≡ (z∨(x∨y))
+    (x∧(y∨z)) ≡ ((x∧y)∨(x∧z))
+    (x∨(y∧z)) ≡ ((x∨y)∧(x∨z))
+        (x∧y) ≡ (y∧x)
+        (x∨y) ≡ (y∨x)
+        (x∨⊥) ≡ x
+        (x∧⊤) ≡ x
+        (x∨⊤) ≡ ⊤
+        (x∧⊥) ≡ ⊥
+        (x∨x) ≡ x
+        (x∧x) ≡ x
+    (x∧(x∨y)) ≡ x
+    (x∨(x∧y)) ≡ x
+            x ≡ x
+           ¬⊥ ≡ ⊤
+           ¬⊤ ≡ ⊥
+
+# Axioms with quantifiers
+         ∀r.⊤ ≡ ⊤
+         ∃r.⊥ ≡ ⊥
+         ¬∃r.x ≡ ∀r.¬x
+        ¬∀r.x ≡ ∃r.¬x
+     ∀r.(x∧y) ≡ (∀r.x ∧ ∀r.y)
+     ∃r.(x∨y) ≡ (∃r.x ∨ ∃r.y)
+
+# this is automatically inserted from x ≡ x
+#            x ⊑ x
+
+            x ⊑ (x∨y)
+            y ⊑ (x∨y)
+        (x∧y) ⊑ x
+        (x∧y) ⊑ y
+            ⊥ ⊑ x
+            x ⊑ ⊤
+
+# Axioms for boxes expressions
+# These are not converted to subset expression
+         C1 ≡ [C1]
+         C2 ≡ [C2]
+         C3 ≡ [C3]
+         C4 ≡ [C4]
+         C5 ≡ [C5]
+         C6 ≡ [C6]
+         C7 ≡ [C7]
+         C8 ≡ [C8]
+         C9 ≡ [C9]
+        C10 ≡ [C10]
+        C11 ≡ [C11]
+        C12 ≡ [C12]
+        C13 ≡ [C13]
+        C14 ≡ [C14]
+        C15 ≡ [C15]
+        C16 ≡ [C16]
+        C17 ≡ [C17]
+        C18 ≡ [C18]
+        C19 ≡ [C19]
+        C20 ≡ [C20]
+          ⊤ ≡ [⊤]
+          ⊥ ≡ [⊥]
+       ¬[x] ≡ [¬x]
+  ([x]∧[y]) ≡ [(x∧y)]
+  ([x]∨[y]) ≡ [(x∨y)]
+     ∀r.[x] ≡ [∀r.x]
+     ∃r.[x] ≡ [∃r.x]
+
+
+
+# Temporary axioms for HM3
+⊥⊑C7
+C5 ⊑ ⊤
+⊤ ⊑ ∃R1.⊤
+⊤ ≡ (∀R2.⊥∨¬∀R2.⊥)
+⊤ ≡ (∃R1.⊤∨¬∃R1.⊤)
+⊤ ≡ (x∨¬x)
+
+# Axioms for boxes expressions
+#        x ≡ [x]
+#     ¬[x] ≡ [¬x]
+#([x]∧[y]) ≡ [(x∧y)]
+#([x]∨[y]) ≡ [(x∨y)]
+# (∀r.[x]) ≡ [(∀r.x)]
+# (∃r.[x]) ≡ [(∃r.x)]
+
+# total: 29
+# equalities: 26
+# subsets: 3
+# total = 29 + 25 + 25*2

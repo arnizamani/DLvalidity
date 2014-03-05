@@ -1,0 +1,229 @@
+Problem: {[C1]⊑[C2]}
+
+WM: 6
+MaxLength: 20
+
+Solution: 
+=========================================================================
+ WM                                |  DM                 |  Rule         
+=========================================================================
+ {[C1]⊑[C2]}
+                                   | C2≡[C2]             | Substitution
+ {[C1]⊑C2}
+                                   | (C7∧∃R1.C10)≡C2     | Substitution
+ {[C1]⊑[(C7∧∃R1.C10)]}
+                                   | C1≡[C1]             | Substitution
+ {C1⊑[(C7∧∃R1.C10)]}
+                                   | ([x]∧[y])≡[(x∧y)]   | Substitution
+ {C1⊑([C7]∧[∃R1.C10])}
+                                   | ∃r.[x]≡[∃r.x]       | Substitution
+ {C1⊑([C7]∧∃R1.[C10])}
+                                   | C10≡[C10]           | Substitution
+ {C1⊑([C7]∧∃R1.C10)}
+                                   |                     | Split1     
+ {C1⊑[C7],C1⊑∃R1.C10}
+                                   | C1⊑C3               | Strenthening1
+ {C1⊑∃R1.C10,C3⊑[C7]}
+                                   | C3⊑C4               | Strenthening1
+ {C1⊑∃R1.C10,C4⊑[C7]}
+                                   | (C5∧∃R1.C6)≡C4      | Substitution
+ {[(C5∧∃R1.C6)]⊑[C7],C1⊑∃R1.C10}
+                                   | C9⊑C10              | Strenthening2
+ {[(C5∧∃R1.C6)]⊑[C7],C1⊑∃R1.C9}
+                                   | C1⊑∃R1.C9           | RemoveAxiom
+ {[(C5∧∃R1.C6)]⊑[C7]}
+                                   | ([x]∧[y])≡[(x∧y)]   | Substitution
+ {([C5]∧[∃R1.C6])⊑[C7]}
+                                   | C5≡[C5]             | Substitution
+ {(C5∧[∃R1.C6])⊑[C7]}
+                                   | (C7∧∃R2.C8)≡C5      | Substitution
+ {([(C7∧∃R2.C8)]∧[∃R1.C6])⊑[C7]}
+                                   | ([x]∧[y])≡[(x∧y)]   | Substitution
+ {(([C7]∧[∃R2.C8])∧[∃R1.C6])⊑[C7]}
+                                   | (x∧(y∧z))≡((x∧y)∧z) | Substitution
+ {([C7]∧([∃R2.C8]∧[∃R1.C6]))⊑[C7]}
+                                   | (x∧y)⊑x             | RemoveAxiom
+ {}
+                                                                         
+Proof Length: 18
+Proof size: 78
+=========================================================================
+Time: 
+21490.2131699s
+
+List of rules: 
+RemoveAxioma ::Δ,a -> Δ,{}
+Substitutionc≡d ::Δ,a -> Δ,{a[c/d]}
+Split1 ::Δ,c⊑(a∧b) -> Δ,{c⊑a,c⊑b}
+Split2 ::Δ,(a∨b)⊑c -> Δ,{a⊑c,b⊑c}
+Split3⊤⊑(a∨b) ::Δ,c⊑d -> Δ,{(c∧a)⊑d,(c∧b)⊑d}
+Split4(a∧b)⊑⊥ ::Δ,c⊑d -> Δ,{c⊑(d∨a),c⊑(d∨b)}
+Contrapositive1 ::Δ,(c∧d)⊑e -> Δ,{c⊑(e∨¬d)}
+Contrapositive2 ::Δ,c⊑(d∨e) -> Δ,{(c∧¬d)⊑e}
+Monotonicity1 ::Δ,∀r.c⊑∀r.d -> Δ,{c⊑d}
+Monotonicity2 ::Δ,∃r.c⊑∃r.d -> Δ,{c⊑d}
+Strenthening1c⊑d ::Δ,a⊑b -> Δ,{a[d/c]+⊑b}
+Strenthening2c⊑d ::Δ,a⊑b -> Δ,{a⊑b[c/d]+}
+
+List of axioms: 
+C1⊑C3
+C1⊑∃R1.C9
+C2⊑(C7∧∃R1.C10)
+C3⊑C4
+C4⊑(C5∧∃R1.C6)
+C5⊑(C7∧∃R2.C8)
+C9⊑C10
+⊤⊑¬⊥
+⊤⊑(x∨⊤)
+⊤⊑∀r.⊤
+⊥⊑¬⊤
+⊥⊑(x∧⊥)
+⊥⊑∃r.⊥
+⊥⊑x
+¬⊤⊑⊥
+¬⊥⊑⊤
+¬¬x⊑x
+¬(x∧y)⊑(¬x∨¬y)
+¬(x∨y)⊑(¬x∧¬y)
+¬∀r.x⊑∃r.¬x
+¬∃r.x⊑∀r.¬x
+(C5∧∃R1.C6)⊑C4
+(C7∧∃R1.C10)⊑C2
+(C7∧∃R2.C8)⊑C5
+(¬x∧¬y)⊑¬(x∨y)
+((x∧y)∧z)⊑(x∧(y∧z))
+((x∨y)∧(x∨z))⊑(x∨(y∧z))
+(∀r.x∧∀r.y)⊑∀r.(x∧y)
+(x∧⊤)⊑x
+(x∧⊥)⊑⊥
+(x∧(y∧z))⊑((x∧y)∧z)
+(x∧(y∧z))⊑(z∧(x∧y))
+(x∧(x∨y))⊑x
+(x∧(y∨z))⊑((x∧y)∨(x∧z))
+(x∧x)⊑x
+(x∧y)⊑(y∧x)
+(x∧y)⊑x
+(x∧y)⊑y
+(y∧x)⊑(x∧y)
+(z∧(x∧y))⊑(x∧(y∧z))
+(¬x∨¬y)⊑¬(x∧y)
+((x∧y)∨(x∧z))⊑(x∧(y∨z))
+((x∨y)∨z)⊑(x∨(y∨z))
+(∀r.x∨∀r.y)⊑∀r.(x∨y)
+(x∨⊤)⊑⊤
+(x∨⊥)⊑x
+(x∨(x∧y))⊑x
+(x∨(y∧z))⊑((x∨y)∧(x∨z))
+(x∨(y∨z))⊑((x∨y)∨z)
+(x∨(y∨z))⊑(z∨(x∨y))
+(x∨x)⊑x
+(x∨y)⊑(y∨x)
+(y∨x)⊑(x∨y)
+(z∨(x∨y))⊑(x∨(y∨z))
+∀r.⊤⊑⊤
+∀r.¬x⊑¬∃r.x
+∀r.(x∧y)⊑(∀r.x∧∀r.y)
+∀r.(x∨y)⊑(∀r.x∨∀r.y)
+∃r.⊥⊑⊥
+∃r.¬x⊑¬∀r.x
+x⊑⊤
+x⊑¬¬x
+x⊑(x∧⊤)
+x⊑(x∧(x∨y))
+x⊑(x∧x)
+x⊑(x∨⊥)
+x⊑(x∨(x∧y))
+x⊑(x∨x)
+x⊑(x∨y)
+x⊑x
+y⊑(x∨y)
+C1≡[C1]
+C1≡(C11∧C3)
+C1≡(C13∧∃R1.C9)
+C10≡[C10]
+C11≡[C11]
+C12≡[C12]
+C13≡[C13]
+C14≡[C14]
+C15≡[C15]
+C16≡[C16]
+C17≡[C17]
+C18≡[C18]
+C19≡[C19]
+C2≡[C2]
+C2≡(C7∧∃R1.C10)
+C20≡[C20]
+C3≡[C3]
+C3≡(C12∧C4)
+C4≡[C4]
+C4≡(C5∧∃R1.C6)
+C5≡[C5]
+C5≡(C7∧∃R2.C8)
+C6≡[C6]
+C7≡[C7]
+C8≡[C8]
+C9≡[C9]
+C9≡(C14∧C10)
+⊤≡¬⊥
+⊤≡(x∨⊤)
+⊤≡∀r.⊤
+⊥≡¬⊤
+⊥≡(x∧⊥)
+⊥≡∃r.⊥
+¬[x]≡[¬x]
+¬⊤≡⊥
+¬⊥≡⊤
+¬¬x≡x
+¬(x∧y)≡(¬x∨¬y)
+¬(x∨y)≡(¬x∧¬y)
+¬∀r.x≡∃r.¬x
+¬∃r.x≡∀r.¬x
+([x]∧[y])≡[(x∧y)]
+(C5∧∃R1.C6)≡C4
+(C7∧∃R1.C10)≡C2
+(C7∧∃R2.C8)≡C5
+(¬x∧¬y)≡¬(x∨y)
+((x∧y)∧z)≡(x∧(y∧z))
+((x∨y)∧(x∨z))≡(x∨(y∧z))
+(∀r.x∧∀r.y)≡∀r.(x∧y)
+(x∧⊤)≡x
+(x∧⊥)≡⊥
+(x∧(y∧z))≡((x∧y)∧z)
+(x∧(y∧z))≡(z∧(x∧y))
+(x∧(x∨y))≡x
+(x∧(y∨z))≡((x∧y)∨(x∧z))
+(x∧x)≡x
+(x∧y)≡(y∧x)
+(y∧x)≡(x∧y)
+(z∧(x∧y))≡(x∧(y∧z))
+([x]∨[y])≡[(x∨y)]
+(¬x∨¬y)≡¬(x∧y)
+((x∧y)∨(x∧z))≡(x∧(y∨z))
+((x∨y)∨z)≡(x∨(y∨z))
+(∀r.x∨∀r.y)≡∀r.(x∨y)
+(x∨⊤)≡⊤
+(x∨⊥)≡x
+(x∨(x∧y))≡x
+(x∨(y∧z))≡((x∨y)∧(x∨z))
+(x∨(y∨z))≡((x∨y)∨z)
+(x∨(y∨z))≡(z∨(x∨y))
+(x∨x)≡x
+(x∨y)≡(y∨x)
+(y∨x)≡(x∨y)
+(z∨(x∨y))≡(x∨(y∨z))
+∀r.[x]≡[∀r.x]
+∀r.⊤≡⊤
+∀r.¬x≡¬∃r.x
+∀r.(x∧y)≡(∀r.x∧∀r.y)
+∀r.(x∨y)≡(∀r.x∨∀r.y)
+∃r.[x]≡[∃r.x]
+∃r.⊥≡⊥
+∃r.¬x≡¬∀r.x
+x≡¬¬x
+x≡(x∧⊤)
+x≡(x∧(x∨y))
+x≡(x∧x)
+x≡(x∨⊥)
+x≡(x∨(x∧y))
+x≡(x∨x)
+x≡x

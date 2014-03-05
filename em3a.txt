@@ -1,0 +1,10 @@
+# Problem EM3
+# em3 = read "{ C1⊑C3, C3⊑C4, C4≡(C5∧(∃P1.C6)), C5≡(C7∧(∃P2.C8)), C1⊑(∃P1.C9), C9⊑C10, C3≡(C7∧(∃P1.C10)) }" :: FiSet
+
+C1⊑C3
+C3⊑C4
+C4≡C5
+C5≡C7
+C1⊑∃R1.C9
+C9⊑C10
+C2≡(C7∧∃R1.C10)

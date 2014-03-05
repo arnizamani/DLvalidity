@@ -1,0 +1,186 @@
+Problem: {[C1]⊑[C2]}
+
+Given: 
+C1⊑∃Prop1.C3
+C3⊑C4
+C4⊑C5
+C5⊑C6
+C6⊑C7
+C7⊑C8
+C2≡∃Prop1.C8
+
+Solution: 
+===================================================
+ WM                 |  DM          |  Rule         
+===================================================
+ {[C1]⊑[C2]}
+                    | x≡[x]        | Substitution
+ {[C1]⊑C2}
+                    | ∃Prop1.C8⊑C2 | Strenthening2
+ {[C1]⊑[∃Prop1.C8]}
+                    | x≡[x]        | Substitution
+ {[C1]⊑∃Prop1.C8}
+                    | C7⊑C8        | Strenthening2
+ {[C1]⊑∃Prop1.C7}
+                    | C6⊑C7        | Strenthening2
+ {[C1]⊑∃Prop1.C6}
+                    | C5⊑C6        | Strenthening2
+ {[C1]⊑∃Prop1.C5}
+                    | C4⊑C5        | Strenthening2
+ {[C1]⊑∃Prop1.C4}
+                    | C3⊑C4        | Strenthening2
+ {[C1]⊑∃Prop1.C3}
+                    | x≡[x]        | Substitution
+ {C1⊑∃Prop1.C3}
+                    | C1⊑∃Prop1.C3 | RemoveAxiom
+ {}
+                                                   
+Proof Length: 10
+Proof size: 32
+===================================================
+
+List of rules: 
+Contrapositive1 ::Δ,(c∧d)⊑e -> Δ,{c⊑(e∨¬d)}
+Contrapositive2 ::Δ,c⊑(d∨e) -> Δ,{(c∧¬d)⊑e}
+Monotonicity1 ::Δ,∀r.c⊑∀r.d -> Δ,{c⊑d}
+Monotonicity2 ::Δ,∃r.c⊑∃r.d -> Δ,{c⊑d}
+RemoveAxioma ::Δ,a -> Δ,{}
+Split1 ::Δ,c⊑(a∧b) -> Δ,{c⊑a,c⊑b}
+Split2 ::Δ,(a∨b)⊑c -> Δ,{a⊑c,b⊑c}
+Split3⊤⊑(a∨b) ::Δ,c⊑d -> Δ,{(c∧a)⊑d,(c∧b)⊑d}
+Split4(a∧b)⊑⊥ ::Δ,c⊑d -> Δ,{c⊑(d∨a),c⊑(d∨b)}
+Strenthening1c⊑d ::Δ,a⊑b -> Δ,{a[d/c]+⊑b}
+Strenthening2c⊑d ::Δ,a⊑b -> Δ,{a⊑b[c/d]+}
+Substitutionc≡d ::Δ,a -> Δ,{a[c/d]}
+
+List of axioms: 
+C1⊑∃Prop1.C3
+C2⊑∃Prop1.C8
+C3⊑C4
+C4⊑C5
+C5⊑C6
+C6⊑C7
+C7⊑C8
+⊤⊑¬⊥
+⊤⊑(c∨⊤)
+⊤⊑∀r.⊤
+⊥⊑¬⊤
+⊥⊑(c∧⊥)
+⊥⊑∃r.⊥
+⊥⊑c
+¬⊤⊑⊥
+¬⊥⊑⊤
+¬¬c⊑c
+¬(c∧d)⊑(¬c∨¬d)
+¬(c∨d)⊑(¬c∧¬d)
+¬∀r.c⊑∃r.¬c
+¬∃r.c⊑∀r.¬c
+(¬c∧¬d)⊑¬(c∨d)
+((c∧d)∧e)⊑(c∧(d∧e))
+((c∨d)∧(c∨e))⊑(c∨(d∧e))
+(∀r.c∧∀r.d)⊑∀r.(c∧d)
+(c∧⊤)⊑c
+(c∧⊥)⊑⊥
+(c∧(d∧e))⊑((c∧d)∧e)
+(c∧(c∨d))⊑c
+(c∧(d∨e))⊑((c∧d)∨(c∧e))
+(c∧d)⊑(d∧c)
+(c∧d)⊑c
+(c∧d)⊑d
+(d∧c)⊑(c∧d)
+(x∧x)⊑x
+(¬c∨¬d)⊑¬(c∧d)
+((c∧d)∨(c∧e))⊑(c∧(d∨e))
+((c∨d)∨e)⊑(c∨(d∨e))
+(∀r.c∨∀r.d)⊑∀r.(c∨d)
+(c∨⊤)⊑⊤
+(c∨⊥)⊑c
+(c∨(c∧d))⊑c
+(c∨(d∧e))⊑((c∨d)∧(c∨e))
+(c∨(d∨e))⊑((c∨d)∨e)
+(c∨c)⊑c
+(c∨d)⊑(d∨c)
+(d∨c)⊑(c∨d)
+∀r.⊤⊑⊤
+∀r.¬c⊑¬∃r.c
+∀r.(c∧d)⊑(∀r.c∧∀r.d)
+∀r.(c∨d)⊑(∀r.c∨∀r.d)
+∃Prop1.C8⊑C2
+∃r.⊥⊑⊥
+∃r.¬c⊑¬∀r.c
+c⊑⊤
+c⊑¬¬c
+c⊑(c∧⊤)
+c⊑(c∧(c∨d))
+c⊑(c∨⊥)
+c⊑(c∨(c∧d))
+c⊑(c∨c)
+c⊑(c∨d)
+c⊑c
+d⊑(c∨d)
+x⊑(x∧x)
+[¬x]≡¬[x]
+[(x∧y)]≡([x]∧[y])
+[(x∨y)]≡([x]∨[y])
+[∀r.x]≡∀r.[x]
+[∃r.x]≡∃r.[x]
+[x]≡x
+C2≡∃Prop1.C8
+⊤≡¬⊥
+⊤≡(c∨⊤)
+⊤≡∀r.⊤
+⊥≡¬⊤
+⊥≡(c∧⊥)
+⊥≡∃r.⊥
+¬[x]≡[¬x]
+¬⊤≡⊥
+¬⊥≡⊤
+¬¬c≡c
+¬(c∧d)≡(¬c∨¬d)
+¬(c∨d)≡(¬c∧¬d)
+¬∀r.c≡∃r.¬c
+¬∃r.c≡∀r.¬c
+([x]∧[y])≡[(x∧y)]
+(¬c∧¬d)≡¬(c∨d)
+((c∧d)∧e)≡(c∧(d∧e))
+((c∨d)∧(c∨e))≡(c∨(d∧e))
+(∀r.c∧∀r.d)≡∀r.(c∧d)
+(c∧⊤)≡c
+(c∧⊥)≡⊥
+(c∧(d∧e))≡((c∧d)∧e)
+(c∧(c∨d))≡c
+(c∧(d∨e))≡((c∧d)∨(c∧e))
+(c∧d)≡(d∧c)
+(d∧c)≡(c∧d)
+(x∧x)≡x
+([x]∨[y])≡[(x∨y)]
+(¬c∨¬d)≡¬(c∧d)
+((c∧d)∨(c∧e))≡(c∧(d∨e))
+((c∨d)∨e)≡(c∨(d∨e))
+(∀r.c∨∀r.d)≡∀r.(c∨d)
+(c∨⊤)≡⊤
+(c∨⊥)≡c
+(c∨(c∧d))≡c
+(c∨(d∧e))≡((c∨d)∧(c∨e))
+(c∨(d∨e))≡((c∨d)∨e)
+(c∨c)≡c
+(c∨d)≡(d∨c)
+(d∨c)≡(c∨d)
+∀r.[x]≡[∀r.x]
+∀r.⊤≡⊤
+∀r.¬c≡¬∃r.c
+∀r.(c∧d)≡(∀r.c∧∀r.d)
+∀r.(c∨d)≡(∀r.c∨∀r.d)
+∃Prop1.C8≡C2
+∃r.[x]≡[∃r.x]
+∃r.⊥≡⊥
+∃r.¬c≡¬∀r.c
+c≡¬¬c
+c≡(c∧⊤)
+c≡(c∧(c∨d))
+c≡(c∨⊥)
+c≡(c∨(c∧d))
+c≡(c∨c)
+c≡c
+x≡[x]
+x≡(x∧x)

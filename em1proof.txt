@@ -1,0 +1,158 @@
+Problem: {C1⊑C1}
+
+Solution: 
+==============================
+ WM      |  DM  |  Rule       
+==============================
+ {C1⊑C1}
+         | x⊑x  | RemoveAxiom
+ {}
+                              
+Proof Length: 1
+Proof size: 0
+==============================
+Time: 
+0.015975s
+
+List of rules: 
+Contrapositive1 ::Δ,(c∧d)⊑e -> Δ,{c⊑(e∨¬d)}
+Contrapositive2 ::Δ,c⊑(d∨e) -> Δ,{(c∧¬d)⊑e}
+Monotonicity1 ::Δ,∀r.c⊑∀r.d -> Δ,{c⊑d}
+Monotonicity2 ::Δ,∃r.c⊑∃r.d -> Δ,{c⊑d}
+RemoveAxioma ::Δ,a -> Δ,{}
+Split1 ::Δ,c⊑(a∧b) -> Δ,{c⊑a,c⊑b}
+Split2 ::Δ,(a∨b)⊑c -> Δ,{a⊑c,b⊑c}
+Split3⊤⊑(a∨b) ::Δ,c⊑d -> Δ,{(c∧a)⊑d,(c∧b)⊑d}
+Split4(a∧b)⊑⊥ ::Δ,c⊑d -> Δ,{c⊑(d∨a),c⊑(d∨b)}
+Strenthening1c⊑d ::Δ,a⊑b -> Δ,{a[d/c]+⊑b}
+Strenthening2c⊑d ::Δ,a⊑b -> Δ,{a⊑b[c/d]+}
+Substitutionc≡d ::Δ,a -> Δ,{a[c/d]}
+
+List of axioms: 
+(x∧(y∨z))
+(x∨(y∧z))
+C1⊑∃R1.C3
+C2⊑∃R1.C8
+C3⊑C4
+C4⊑C5
+C5⊑C6
+C6⊑C7
+C7⊑C8
+⊤⊑¬⊥
+⊤⊑(x∨⊤)
+⊤⊑∀r.⊤
+⊥⊑¬⊤
+⊥⊑(x∧⊥)
+⊥⊑∃r.⊥
+⊥⊑x
+¬⊤⊑⊥
+¬⊥⊑⊤
+¬¬x⊑x
+¬(x∧y)⊑(¬x∨¬y)
+¬(x∨y)⊑(¬x∧¬y)
+¬∀r.x⊑∃r.¬x
+¬∃r.x⊑∀r.¬x
+(¬x∧¬y)⊑¬(x∨y)
+(∀r.x∧∀r.y)⊑∀r.(x∧y)
+(x∧⊤)⊑x
+(x∧⊥)⊑⊥
+(x∧(y∧z))⊑(z∧(x∧y))
+(x∧(x∨y))⊑x
+(x∧x)⊑x
+(x∧y)⊑(y∧x)
+(x∧y)⊑x
+(x∧y)⊑y
+(y∧x)⊑(x∧y)
+(z∧(x∧y))⊑(x∧(y∧z))
+(¬x∨¬y)⊑¬(x∧y)
+(∀r.x∨∀r.y)⊑∀r.(x∨y)
+(x∨⊤)⊑⊤
+(x∨⊥)⊑x
+(x∨(x∧y))⊑x
+(x∨(y∨z))⊑(z∨(x∨y))
+(x∨x)⊑x
+(x∨y)⊑(y∨x)
+(y∨x)⊑(x∨y)
+(z∨(x∨y))⊑(x∨(y∨z))
+∀r.⊤⊑⊤
+∀r.¬x⊑¬∃r.x
+∀r.(x∧y)⊑(∀r.x∧∀r.y)
+∀r.(x∨y)⊑(∀r.x∨∀r.y)
+∃R1.C8⊑C2
+∃r.⊥⊑⊥
+∃r.¬x⊑¬∀r.x
+x⊑⊤
+x⊑¬¬x
+x⊑(x∧⊤)
+x⊑(x∧(x∨y))
+x⊑(x∧x)
+x⊑(x∨⊥)
+x⊑(x∨(x∧y))
+x⊑(x∨x)
+x⊑(x∨y)
+x⊑x
+y⊑(x∨y)
+C1≡[C1]
+C10≡[C10]
+C2≡[C2]
+C2≡∃R1.C8
+C3≡[C3]
+C4≡[C4]
+C5≡[C5]
+C6≡[C6]
+C7≡[C7]
+C8≡[C8]
+C9≡[C9]
+⊤≡¬⊥
+⊤≡(x∨⊤)
+⊤≡∀r.⊤
+⊥≡¬⊤
+⊥≡(x∧⊥)
+⊥≡∃r.⊥
+¬[x]≡[¬x]
+¬⊤≡⊥
+¬⊥≡⊤
+¬¬x≡x
+¬(x∧y)≡(¬x∨¬y)
+¬(x∨y)≡(¬x∧¬y)
+¬∀r.x≡∃r.¬x
+¬∃r.x≡∀r.¬x
+([x]∧[y])≡[(x∧y)]
+(¬x∧¬y)≡¬(x∨y)
+(∀r.x∧∀r.y)≡∀r.(x∧y)
+(x∧⊤)≡x
+(x∧⊥)≡⊥
+(x∧(y∧z))≡(z∧(x∧y))
+(x∧(x∨y))≡x
+(x∧x)≡x
+(x∧y)≡(y∧x)
+(y∧x)≡(x∧y)
+(z∧(x∧y))≡(x∧(y∧z))
+([x]∨[y])≡[(x∨y)]
+(¬x∨¬y)≡¬(x∧y)
+(∀r.x∨∀r.y)≡∀r.(x∨y)
+(x∨⊤)≡⊤
+(x∨⊥)≡x
+(x∨(x∧y))≡x
+(x∨(y∨z))≡(z∨(x∨y))
+(x∨x)≡x
+(x∨y)≡(y∨x)
+(y∨x)≡(x∨y)
+(z∨(x∨y))≡(x∨(y∨z))
+∀r.[x]≡[∀r.x]
+∀r.⊤≡⊤
+∀r.¬x≡¬∃r.x
+∀r.(x∧y)≡(∀r.x∧∀r.y)
+∀r.(x∨y)≡(∀r.x∨∀r.y)
+∃R1.C8≡C2
+∃r.[x]≡[∃r.x]
+∃r.⊥≡⊥
+∃r.¬x≡¬∀r.x
+x≡¬¬x
+x≡(x∧⊤)
+x≡(x∧(x∨y))
+x≡(x∧x)
+x≡(x∨⊥)
+x≡(x∨(x∧y))
+x≡(x∨x)
+x≡x

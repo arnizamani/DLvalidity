@@ -1,0 +1,282 @@
+Problem HM3
+
+C1⊑∀R1.C3
+C6≡∀R2.C7
+C6⊑C8
+C8⊑C4
+∃R2.⊤⊑C4
+C4⊑∃R1.C5
+C2≡(∃R1.C3∨∀R3.C9)
+
+To prove:  {[C1]⊑[C2]}
+
+Manual Proof: (hand-made)
+Max WM required: 18
+Max length required: 34
+===============================================================
+ WM                             |  Rule                |  DM   
+===============================================================
+
+ 2  [C1]⊑[C2]
+ 2  C1⊑[C2]                       Substitution:   [C1]≡C1
+ 2  C1⊑C2                         Substitution:   [C2]≡C2
+ 2  [∀R1.C3]⊑C2                   Strengthening:  C1⊑∀R1.C3
+ 2  [∀R1.C3]⊑[(∃R1.C3∨∀R3.C9)]    Substitution:   C2≡(∃R1.C3∨∀R3.C9)
+ 4  [∀R1.C3]⊑[∃R1.C3]∨[∀R3.C9]    Substitution:   [(x∨y)]≡([x]∨[y])
+ 2  [∀R1.C3]⊑[∃R1.C3]             Strengthening:  x⊑(x∨y)
+13  ([∀R1.C3]∧∃R1.⊤)⊑[∃R1.C3],    ([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3] Split
+13  (∃R1.⊤∧[∀R1.C3])⊑[∃R1.C3],    ([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3] Substitution:   (x&y)=(y&x)
+14  ∃R1.⊤⊑([∃R1.C3]∨¬[∀R1.C3]),  [∀R1.C3]∧¬∃R1.⊤⊑[∃R1.C3] Contrapositive: 
+16  ∃R1.⊤⊑([∃R1.C3]∨¬∀R1.[C3]),  [∀R1.C3]∧¬∃R1.⊤⊑[∃R1.C3] Subsitution:    [∀r.x]≡∀r.[x]
+16  ∃R1.⊤⊑([∃R1.C3]∨∃R1.¬[C3]),  [∀R1.C3]∧¬∃R1.⊤⊑[∃R1.C3] Substitution:   ¬∀r.x⊑∃r.¬x
+18  ∃R1.⊤⊑(∃R1.[C3]∨∃R1.¬[C3]),  [∀R1.C3]∧¬∃R1.⊤⊑[∃R1.C3] Subsitution:    [∃r.x]≡∃r.[x]
+16  ∃R1.⊤⊑∃R1.([C3]∨¬[C3]),      [∀R1.C3]∧¬∃R1.⊤⊑[∃R1.C3] Substitution:   (∃r.x∧∃r.y)≡∃r.(x∧y)
+13  ∃R1.⊤⊑∃R1.⊤,                 [∀R1.C3]∧¬∃R1.⊤⊑[∃R1.C3] Substitution:   (x∨¬x)≡⊤ (Missing axiom)
+ 7  ([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3]      RemoveAxiom: x⊑x
+ 5  ¬∃R1.⊤⊑[∃R1.C3] Strenthening1: (x∧y)⊑y
+ 5  ∀R1.¬⊤⊑[∃R1.C3] Substitution:  ∀r.¬x≡¬∃r.x
+ 4  ∀R1.⊥⊑[∃R1.C3]  Substitution:  ⊥≡¬⊤
+ 4  ∀R1.⊥⊑⊥         Strenthening2  ⊥⊑x 
+ 6  ¬⊥⊑¬∀R1.⊥                     Contrapositive: (Missing rule)
+ 5  ⊤⊑¬∀R1.⊥                      Substitution:   ¬⊥≡⊤
+ 5  ⊤⊑∃R1.¬⊥                      Substitution:   ¬∀r.x⊑∃r.¬x
+ 4  ⊤⊑∃R1.⊤                       Substitution:   ¬⊥≡⊤
+ 4  ⊤⊑∃R1.C5                      Strengthening:  C5⊑⊤
+ 2  ⊤⊑C4                          Strengthening:  C4⊑∃R1.C5
+ 9  (∀R2.⊥∨¬∀R2.⊥)⊑C4             Substitution:   ⊤≡(∀R2.⊥∨¬∀R2.⊥)
+ 9  (∀R2.⊥∨∃R2.¬⊥)⊑C4             Substitution:   ¬∀r.x≡∃r.¬x
+ 8  (∀R2.⊥∨∃R2.⊤)⊑C4              Substitution:   ¬⊥≡⊤
+ 8  ∀R2.⊥⊑C4, ∃R2.⊤⊑C4            Split2:         
+ 4  ∀R2.⊥⊑C4                      RemoveAxiom:    ∃R2.⊤⊑C4
+ 4  ∀R2.C7⊑C4                     Strengthening:  ⊥⊑C7
+ 2  C6⊑C4                         Substitution:   C6≡∀R2.C7
+ 2  C6⊑C8                         Strengthening:  C8⊑C4
+ 0  {}                            RemoveAxiom:    C6⊑C8
+
+Proof size:   
+Proof length:  34
+
+
+Computer Proof: (computed in smaller steps)
+Max WM required: 18
+Max length required: 34
+===============================================================
+ WM                       |  DM                |  Rule         
+===============================================================
+ 2  {[C1]⊑[C2]}
+ 2  {[C1]⊑C2}                 | C2≡[C2]            | Substitution
+ 2  {[C1]⊑[(∃R1.C3∨∀R3.C9)]}  | (∃R1.C3∨∀R3.C9)≡C2 | Substitution
+ 2  {C1⊑[(∃R1.C3∨∀R3.C9)]}    | C1≡[C1]            | Substitution
+ 4  {C1⊑([∃R1.C3]∨[∀R3.C9])}  | ([x]∨[y])≡[(x∨y)]  | Substitution
+ 2  {C1⊑[∃R1.C3]}             | x⊑(x∨y)            | Strenthening2
+ 2  {[∀R1.C3]⊑[∃R1.C3]}                                       | C1⊑∀R1.C3          | Strenthening1
+13  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],([∀R1.C3]∧∃R1.⊤)⊑[∃R1.C3]}    | ⊤⊑(∃R1.⊤∨¬(∃R1.⊤)) | Split3     
+13  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],(∃R1.⊤∧[∀R1.C3])⊑[∃R1.C3]}    | (x∧y)≡(y∧x)     | Substitution 
+15  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],(∃R1.⊤∧∀R1.[C3])⊑[∃R1.C3]}    | ∀r.[x]≡[∀r.x]   | Substitution 
+16  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],∃R1.⊤⊑([∃R1.C3]∨¬∀R1.[C3])} |                 | Contrapositive1
+16  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],∃R1.⊤⊑([∃R1.C3]∨∃R1.¬[C3])} | ∃r.¬(x)≡¬(∀r.x) | Substitution 
+18  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],∃R1.⊤⊑(∃R1.[C3]∨∃R1.¬[C3])} | ∃r.[x]≡[∃r.x]        | Substitution
+16  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],∃R1.⊤⊑∃R1.([C3]∨¬[C3])}     | ∃r.(x∨y)≡(∃r.x∨∃r.y) | Substitution
+12  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3],⊤⊑([C3]∨¬[C3])}             |                      | Monotonicity2
+ 7  {([∀R1.C3]∧¬∃R1.⊤)⊑[∃R1.C3]}                              | ⊤⊑(x∨¬(x))      | RemoveAxiom
+ 5  {¬∃R1.⊤⊑[∃R1.C3]}   | (x∧y)⊑y         | Strenthening1
+ 5  {∀R1.¬⊤⊑[∃R1.C3]}   | ∀r.¬x≡¬∃r.x     | Substitution
+ 4  {∀R1.⊥⊑[∃R1.C3]}    | ⊥≡¬⊤            | Substitution
+ 4  {∀R1.⊥⊑⊥}           | ⊥⊑x             | Strenthening2
+ 6  {¬⊥⊑¬∀R1.⊥}         |                 | Contrapositive3  
+ 6  {¬⊥⊑∃R1.¬⊥}         | ∃r.¬x≡¬∀r.x     | Substitution 
+ 5  {¬⊥⊑∃R1.⊤}          | ⊤⊑¬⊥            | Strenthening2
+ 5  {¬⊥⊑∃R1.C5}         | C5⊑⊤            | Strenthening2
+ 3  {¬⊥⊑C4}             | C4⊑∃R1.C5       | Strenthening2
+ 2  {⊤⊑C4}              | ⊤≡¬⊥            | Substitution 
+ 9  {(∀R2.⊥∨¬∀R2.⊥)⊑C4} | (∀R2.⊥∨¬∀R2.⊥)≡⊤   | Substitution
+ 9  {(∀R2.⊥∨∃R2.¬⊥)⊑C4} | ∃r.¬x≡¬∀r.x        | Substitution
+ 8  {(∀R2.⊥∨∃R2.⊤)⊑C4}  | ⊤≡¬⊥               | Substitution
+ 8  {∀R2.⊥⊑C4,∃R2.⊤⊑C4} |           | Split2     
+ 8  {∀R2.⊥⊑C8,∃R2.⊤⊑C4} | C8⊑C4     | Strenthening2
+ 8  {∀R2.C7⊑C8,∃R2.⊤⊑C4}| ⊥⊑C7      | Strenthening1
+ 6  {C6⊑C8,∃R2.⊤⊑C4}    | C6≡∀R2.C7 | Substitution
+ 4  {∃R2.⊤⊑C4}          | C6⊑C8     | RemoveAxiom
+ 0  {}                  | ∃R2.⊤⊑C4  | RemoveAxiom
+
+Proof size:  247
+Proof length: 34
+
+List of rules: 
+RemoveAxioma ::Δ,a -> Δ,{}
+Substitutionc≡d ::Δ,a -> Δ,{a[c/d]}
+Split1 ::Δ,c⊑(a∧b) -> Δ,{c⊑a,c⊑b}
+Split2 ::Δ,(a∨b)⊑c -> Δ,{a⊑c,b⊑c}
+Split3⊤⊑(a∨b) ::Δ,c⊑d -> Δ,{(c∧a)⊑d,(c∧b)⊑d}
+Split4(a∧b)⊑⊥ ::Δ,c⊑d -> Δ,{c⊑(d∨a),c⊑(d∨b)}
+Contrapositive1 ::Δ,(c∧d)⊑e -> Δ,{c⊑(e∨¬d)}
+Contrapositive2 ::Δ,c⊑(d∨e) -> Δ,{(c∧¬d)⊑e}
+Monotonicity1 ::Δ,∀r.c⊑∀r.d -> Δ,{c⊑d}
+Monotonicity2 ::Δ,∃r.c⊑∃r.d -> Δ,{c⊑d}
+Strenthening1 c⊑d ::Δ,a⊑b -> Δ,{a[d/c]+⊑b}
+Strenthening2 c⊑d ::Δ,a⊑b -> Δ,{a⊑b[c/d]+}
+
+List of axioms: 
+C1⊑∀R1.C3
+C2⊑(∃R1.C3∨∀R3.C9)
+C4⊑∃R1.C5
+C5⊑⊤
+C6⊑C8
+C6⊑∀R2.C7
+C8⊑C4
+⊤⊑¬⊥
+⊤⊑(x∨⊤)
+⊤⊑∀r.⊤
+⊤⊑∃R1.⊤
+⊥⊑C7
+⊥⊑¬⊤
+⊥⊑(x∧⊥)
+⊥⊑∃r.⊥
+⊥⊑x
+¬⊤⊑⊥
+¬⊥⊑⊤
+¬¬x⊑x
+¬(x∧y)⊑(¬x∨¬y)
+¬(x∨y)⊑(¬x∧¬y)
+¬∀r.x⊑∃r.¬x
+¬∃r.x⊑∀r.¬x
+(¬x∧¬y)⊑¬(x∨y)
+((x∧y)∧z)⊑(x∧(y∧z))
+((x∨y)∧(x∨z))⊑(x∨(y∧z))
+(∀r.x∧∀r.y)⊑∀r.(x∧y)
+(x∧⊤)⊑x
+(x∧⊥)⊑⊥
+(x∧(y∧z))⊑((x∧y)∧z)
+(x∧(y∧z))⊑(z∧(x∧y))
+(x∧(x∨y))⊑x
+(x∧(y∨z))⊑((x∧y)∨(x∧z))
+(x∧x)⊑x
+(x∧y)⊑(y∧x)
+(x∧y)⊑x
+(x∧y)⊑y
+(y∧x)⊑(x∧y)
+(z∧(x∧y))⊑(x∧(y∧z))
+(¬x∨¬y)⊑¬(x∧y)
+((x∧y)∨(x∧z))⊑(x∧(y∨z))
+((x∨y)∨z)⊑(x∨(y∨z))
+(∀r.x∨∀r.y)⊑∀r.(x∨y)
+(∃R1.C3∨∀R3.C9)⊑C2
+(x∨⊤)⊑⊤
+(x∨⊥)⊑x
+(x∨(x∧y))⊑x
+(x∨(y∧z))⊑((x∨y)∧(x∨z))
+(x∨(y∨z))⊑((x∨y)∨z)
+(x∨(y∨z))⊑(z∨(x∨y))
+(x∨x)⊑x
+(x∨y)⊑(y∨x)
+(y∨x)⊑(x∨y)
+(z∨(x∨y))⊑(x∨(y∨z))
+∀R2.C7⊑C6
+∀r.⊤⊑⊤
+∀r.¬x⊑¬∃r.x
+∀r.(x∧y)⊑(∀r.x∧∀r.y)
+∀r.(x∨y)⊑(∀r.x∨∀r.y)
+∃R2.⊤⊑C4
+∃r.⊥⊑⊥
+∃r.¬x⊑¬∀r.x
+x⊑⊤
+x⊑¬¬x
+x⊑(x∧⊤)
+x⊑(x∧(x∨y))
+x⊑(x∧x)
+x⊑(x∨⊥)
+x⊑(x∨(x∧y))
+x⊑(x∨x)
+x⊑(x∨y)
+x⊑x
+y⊑(x∨y)
+C1≡[C1]
+C1≡(A1∧[∀R1.C3])
+C10≡[C10]
+C11≡[C11]
+C12≡[C12]
+C13≡[C13]
+C14≡[C14]
+C15≡[C15]
+C16≡[C16]
+C17≡[C17]
+C18≡[C18]
+C19≡[C19]
+C2≡[C2]
+C2≡(∃R1.C3∨∀R3.C9)
+C20≡[C20]
+C3≡[C3]
+C4≡[C4]
+C4≡(A4∧[∃R1.C5])
+C5≡[C5]
+C6≡[C6]
+C6≡(A2∧C8)
+C6≡∀R2.C7
+C7≡[C7]
+C8≡[C8]
+C8≡(A3∧C4)
+C9≡[C9]
+⊤≡[⊤]
+⊤≡¬⊥
+⊤≡(x∨⊤)
+⊤≡∀r.⊤
+⊥≡[⊥]
+⊥≡¬⊤
+⊥≡(x∧⊥)
+⊥≡∃r.⊥
+¬[x]≡[¬x]
+¬⊤≡⊥
+¬⊥≡⊤
+¬¬x≡x
+¬(x∧y)≡(¬x∨¬y)
+¬(x∨y)≡(¬x∧¬y)
+¬∀r.x≡∃r.¬x
+¬∃r.x≡∀r.¬x
+([x]∧[y])≡[(x∧y)]
+(¬x∧¬y)≡¬(x∨y)
+((x∧y)∧z)≡(x∧(y∧z))
+((x∨y)∧(x∨z))≡(x∨(y∧z))
+(∀r.x∧∀r.y)≡∀r.(x∧y)
+(x∧⊤)≡x
+(x∧⊥)≡⊥
+(x∧(y∧z))≡((x∧y)∧z)
+(x∧(y∧z))≡(z∧(x∧y))
+(x∧(x∨y))≡x
+(x∧(y∨z))≡((x∧y)∨(x∧z))
+(x∧x)≡x
+(x∧y)≡(y∧x)
+(y∧x)≡(x∧y)
+(z∧(x∧y))≡(x∧(y∧z))
+([x]∨[y])≡[(x∨y)]
+(¬x∨¬y)≡¬(x∧y)
+((x∧y)∨(x∧z))≡(x∧(y∨z))
+((x∨y)∨z)≡(x∨(y∨z))
+(∀r.x∨∀r.y)≡∀r.(x∨y)
+(∃R1.C3∨∀R3.C9)≡C2
+(x∨⊤)≡⊤
+(x∨⊥)≡x
+(x∨(x∧y))≡x
+(x∨(y∧z))≡((x∨y)∧(x∨z))
+(x∨(y∨z))≡((x∨y)∨z)
+(x∨(y∨z))≡(z∨(x∨y))
+(x∨x)≡x
+(x∨y)≡(y∨x)
+(y∨x)≡(x∨y)
+(z∨(x∨y))≡(x∨(y∨z))
+∀R2.C7≡C6
+∀r.[x]≡[∀r.x]
+∀r.⊤≡⊤
+∀r.¬x≡¬∃r.x
+∀r.(x∧y)≡(∀r.x∧∀r.y)
+∀r.(x∨y)≡(∀r.x∨∀r.y)
+∃r.[x]≡[∃r.x]
+∃r.⊥≡⊥
+∃r.¬x≡¬∀r.x
+x≡¬¬x
+x≡(x∧⊤)
+x≡(x∧(x∨y))
+x≡(x∧x)
+x≡(x∨⊥)
+x≡(x∨(x∧y))
+x≡(x∨x)
+x≡x

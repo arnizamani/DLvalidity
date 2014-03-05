@@ -1,0 +1,48 @@
+# Rules for Description Logic rewrite system
+# Abdul Rahim Nizamani, 2013
+
+## Folliwng rules are implemented manually in the program:
+#InspectBox
+#Recall
+
+## Rules have the following format
+## Rule name = optional Condition ::  WM form   ->  Rewrite form
+
+#Somerule=            :: Δ,a⊑(a∧b) -> Δ,{a≡b}
+
+RemoveAxiom=       a :: Δ,a         -> Δ,{}
+Substitution=    c≡d :: Δ,a         -> Δ,{a[c/d]}
+
+Split1=             :: Δ,c⊑(a∧b)   -> Δ,{c⊑a,c⊑b}
+Split2=             :: Δ,(a∨b)⊑c   -> Δ,{a⊑c,b⊑c}
+
+Split3=     ⊤⊑(a∨b) :: Δ,c⊑d       -> Δ,{(c∧a)⊑d,(c∧b)⊑d}
+Split4=     (a∧b)⊑⊥ :: Δ,c⊑d       -> Δ,{c⊑(d∨a),c⊑(d∨b)}
+
+Contrapositive1=    :: Δ,(c∧d)⊑e   -> Δ,{c⊑(e∨¬d)}
+Contrapositive2=    :: Δ,c⊑(d∨e)   -> Δ,{(c∧¬d)⊑e}
+Contrapositive3=    :: Δ,c⊑d   -> Δ,{¬d⊑¬c}
+
+Monotonicity1=      :: Δ,∀r.c ⊑ ∀r.d -> Δ,{c⊑d}
+Monotonicity2=      :: Δ,∃r.c ⊑ ∃r.d -> Δ,{c⊑d}
+
+Strenthening1=  c⊑d :: Δ,a⊑b       -> Δ,{a[d/c]+ ⊑ b}
+Strenthening2=  c⊑d :: Δ,a⊑b       -> Δ,{a ⊑ b[c/d]+}
+
+#Strenthening1=  c⊑d :: Δ,c⊑b       -> Δ,{d ⊑ b}
+#Strenthening2=  c⊑d :: Δ,a⊑d       -> Δ,{a ⊑ c}
+
+
+
+# Old rules: (before 2013-06-29)
+#    fi :: Δ,  fi      -> Δ,{}
+# c ≡ d :: Δ,  fi[c]   -> Δ,{fi[d]}
+#Rule3 =      c ⊑ d :: Δ, c⊑e      -> Δ,{d⊑e}
+#Rule4 =      c ⊑ d :: Δ, e⊑d      -> Δ,{e⊑c}
+#Rule1 =    ⊤⊑(a∨b) :: Δ, c⊑d      -> Δ,{(c∧a)⊑d,(c∧b)⊑d}
+#Rule2 =    (a∧b)⊑⊥ :: Δ, c⊑d      -> Δ,{c⊑(d∨a),c⊑(d∨b)}
+#Rule5 =            :: Δ,(c∧d)⊑e   -> Δ,{c⊑(e∨¬d)}
+#Rule6 =            :: Δ,c⊑(d∨e)   -> Δ,{(c∧¬d)⊑e}
+#Rule7 =            :: Δ,∀r.c⊑∀r.d -> Δ,{c⊑d}
+#Rule8 =            :: Δ,∃r.c⊑∃r.d -> Δ,{c⊑d}
+

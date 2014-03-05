@@ -1,0 +1,10 @@
+# Problem HM3
+# hm3 = read "{ C1⊑(∀Prop1.C3), C6≡(∀Prop2.C7), C6⊑C8, C8⊑C4, C4⊑(∃Prop1.C5), (∃Prop2.⊤)⊑C4, C2≡((∃Prop1.C3)∨(∀Prop3.C9)) }" :: FiSet
+
+C1⊑∀R1.C3
+C6≡∀R2.C7
+C6⊑C8
+C8⊑C4
+∃R2.⊤⊑C4
+C4⊑∃R1.C5
+C2≡(∃R1.C3∨∀R3.C9)

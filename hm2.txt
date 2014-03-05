@@ -1,0 +1,8 @@
+# Problem HM2
+# hm2 = read "{ C3≡((∃P1.C5)∨(∀P1.C5)), C3⊑C4, (∃P1.⊤)⊑C4, C4⊑C2 }" :: FiSet
+
+# Original axioms
+C3⊑C4
+∃R1.⊤⊑C4
+C4⊑C2
+C3≡(∃R1.C5∨∀R1.C5)

@@ -1,0 +1,112 @@
+Solution: 
+{C6⊑C8,∃Prop2.⊤⊑∃Prop1.⊤}
+{C4⊑∃Prop1.⊤,C6⊑C8}, Strenthening1= Just c⊑d :: a⊑b -> {a[d/c]+⊑b}, Nothing
+{C4⊑∃Prop1.⊤}, RemoveAxiom= Just a :: a -> {}, Nothing
+{C4⊑∃Prop1.c}, Strenthening2= Just c⊑d :: a⊑b -> {a⊑b[c/d]+}, Nothing
+{}, RemoveAxiom= Just a :: a -> {}, Nothing
+
+Rules: 
+Contrapositive1 ::Δ,c∧d⊑e -> Δ,{c⊑e∨¬d}
+Contrapositive2 ::Δ,c⊑d∨e -> Δ,{c∧¬d⊑e}
+Monotonicity1 ::Δ,∀r.c⊑∀r.d -> Δ,{c⊑d}
+Monotonicity2 ::Δ,∃r.c⊑∃r.d -> Δ,{c⊑d}
+RemoveAxioma::Δ,a -> Δ,{}
+Split1 ::Δ,c⊑a∨b -> Δ,{c⊑a,c⊑b}
+Split2 ::Δ,a∧b⊑c -> Δ,{a⊑c,b⊑c}
+Split3⊤⊑a∨b::Δ,c⊑d -> Δ,{c∧a⊑d,c∧b⊑d}
+Split4a∧b⊑⊥::Δ,c⊑d -> Δ,{c⊑d∨a,c⊑d∨b}
+Strenthening1c⊑d::Δ,a⊑b -> Δ,{a[d/c]+⊑b}
+Strenthening2c⊑d::Δ,a⊑b -> Δ,{a⊑b[c/d]+}
+Substitutionc≡d::Δ,a -> Δ,{a[c/d]}
+
+Axioms: 
+C1⊑∀Prop1.C3
+C2⊑∃Prop1.C3∨∀Prop3.C9
+C4⊑∃Prop1.C5
+C6⊑C8
+C6⊑∀Prop2.C7
+C8⊑C4
+⊤⊑¬⊥
+⊤⊑c∨⊤
+⊤⊑∀r.⊤
+⊥⊑¬⊤
+⊥⊑c∧⊥
+⊥⊑∃r.⊥
+⊥⊑c
+¬⊤⊑⊥
+¬⊥⊑⊤
+¬¬c⊑c
+¬c∧d⊑¬c∨¬d
+¬c∨d⊑¬c∧¬d
+¬∀r.c⊑∃r.¬c
+¬∃r.c⊑∀r.¬c
+¬c∧¬d⊑¬c∨d
+c∧d∧e⊑c∧d∧e
+c∨d∧c∨e⊑c∨d∧e
+∀r.c∧∀r.d⊑∀r.c∧d
+c∧⊤⊑c
+c∧⊥⊑⊥
+c∧d∧e⊑c∧d∧e
+c∧c∨d⊑c
+c∧d∨e⊑c∧d∨c∧e
+c∧c⊑c
+c∧d⊑d∧c
+d∧c⊑c∧d
+¬c∨¬d⊑¬c∧d
+c∧d∨c∧e⊑c∧d∨e
+c∨d∨e⊑c∨d∨e
+∀r.c∨∀r.d⊑∀r.c∨d
+∃Prop1.C3∨∀Prop3.C9⊑C2
+c∨⊤⊑⊤
+c∨⊥⊑c
+c∨c∧d⊑c
+c∨d∧e⊑c∨d∧c∨e
+c∨d∨e⊑c∨d∨e
+c∨c⊑c
+c∨d⊑d∨c
+d∨c⊑c∨d
+∀Prop2.C7⊑C6
+∀r.⊤⊑⊤
+∀r.¬c⊑¬∃r.c
+∀r.c∧d⊑∀r.c∧∀r.d
+∀r.c∨d⊑∀r.c∨∀r.d
+∃Prop2.⊤⊑C4
+∃r.⊥⊑⊥
+∃r.¬c⊑¬∀r.c
+c⊑⊤
+c⊑¬¬c
+c⊑c∧⊤
+c⊑c∧c∨d
+c⊑c∧c
+c⊑c∨⊥
+c⊑c∨c∧d
+c⊑c∨c
+c⊑c
+C2≡∃Prop1.C3∨∀Prop3.C9
+C6≡∀Prop2.C7
+¬⊤≡⊥
+¬⊥≡⊤
+¬¬c≡c
+¬c∧d≡¬c∨¬d
+¬c∨d≡¬c∧¬d
+¬∀r.c≡∃r.¬c
+¬∃r.c≡∀r.¬c
+c∧⊤≡c
+c∧⊥≡⊥
+c∧d∧e≡c∧d∧e
+c∧c∨d≡c
+c∧d∨e≡c∧d∨c∧e
+c∧c≡c
+c∧d≡d∧c
+c∨⊤≡⊤
+c∨⊥≡c
+c∨c∧d≡c
+c∨d∧e≡c∨d∧c∨e
+c∨d∨e≡c∨d∨e
+c∨c≡c
+c∨d≡d∨c
+∀r.⊤≡⊤
+∀r.c∧d≡∀r.c∧∀r.d
+∀r.c∨d≡∀r.c∨∀r.d
+∃r.⊥≡⊥
+c≡c
